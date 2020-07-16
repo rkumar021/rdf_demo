@@ -1,0 +1,8 @@
+__pycache__
+media
+.vscode
+env/
+.DS_Store
+.idea/
+staticfiles/
+localvariables.py
