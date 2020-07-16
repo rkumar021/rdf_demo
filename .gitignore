@@ -6,3 +6,4 @@ env/
 .idea/
 staticfiles/
 localvariables.py
+db.sqlite3
