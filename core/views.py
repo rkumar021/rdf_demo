@@ -1,6 +1,4 @@
 # from django.shortcuts import render
-#
-#
 # from rest_framework import Listview
 # from rest_framework import serializers
 from rest_framework import serializers
