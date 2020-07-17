@@ -2,9 +2,9 @@ from rest_framework import serializers
 from core.models import Book
 
 
-class BookSerializer(serializers.Serializer):
+class BookSerializer(serializers.ModelSerializer):
     
-    class meta:
+    class Meta:
         model = Book
         fields = "__all__"
     
