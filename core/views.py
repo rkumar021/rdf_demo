@@ -41,10 +41,10 @@ def Login(request):
         loginusername = request.POST['loginusername']
         loginpassword = request.POST['loginpassword']
 
-        Signup = authenticate(username=loginusername,password1=loginpassword)
+        user = authenticate(username=loginusername,password=loginpassword)
 
-        if Signup is not None:
-            login(request,Signup)
+        if user is not None:
+            login(request,user)
             messages.success(request,"successfully Logged In")
             return redirect('home')
         else:
