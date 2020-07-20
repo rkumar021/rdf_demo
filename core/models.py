@@ -11,10 +11,16 @@ class Book(models.Model):
     price = models.IntegerField()
 
 class Signup(models.Model):
-    username = models.CharField(max_length=150)
+    Role = (
+    ("Supervisor", "SV"),
+    ("Teachers", "T"),
+)
+    username = models.ForeignKey('auth.User', on_delete=models.CASCADE, max_length=150)
     email = models.EmailField()
     password1 = models.CharField(max_length=25)
     password2 = models.CharField(max_length=25)
+    usertype = models.CharField(choices=Role, max_length=50)
+
 
     def __str__(self):
         return self.username

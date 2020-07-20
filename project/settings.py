@@ -34,10 +34,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'core',
     'userprofiles',
+    
+    #third party
     'drf_yasg',
     'rest_framework_swagger',
     'rest_framework.authtoken',
     'rest_auth',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
