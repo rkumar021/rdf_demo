@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'rest_framework',
     'core',
-    'profileuser',
+    'userprofiles',
     'drf_yasg',
     'rest_framework_swagger',
     'rest_framework.authtoken',
