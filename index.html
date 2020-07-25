@@ -1,0 +1,36 @@
+<!doctype html>
+<head>
+<title>demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>JSON To Table</h1>
+<table id="table">
+    <tr>
+        <th>Id </th>
+	<th>Created</th>
+	<th>Title</th>
+	<th>Description</th>
+        <th>Price</th>
+    </tr>
+</table>
+<script>
+$(document).ready(function(){
+    $.getJSON('http://127.0.0.1:8000/api/booksbooks/',function(data){
+	var bookdata ="";
+        $.each(data, function(index){
+			console.log(index)
+	bookdata += '<tr>'
+	bookdata += '<td>'+data[index].id+'</td>'
+	bookdata += '<td>'+data[index].created+'</td>'
+	bookdata += '<td>'+data[index].title+'</td>'
+	bookdata += '<td>'+data[index].description+'</td>'
+	bookdata += '<td>'+data[index].price+'</td>'
+	bookdata += '</tr>'
+	});
+	$('#table').append(bookdata);
+});
+});
+</script>
+</body>
+</html>	
