@@ -141,4 +141,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
+
+#for whitelisting webservers
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:8001",
+    "http://127.0.0.1:5500",
+
+]
