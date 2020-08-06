@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %} Home{% endblock title %}
+{% block homeactive %} active {% endblock homeactive %}
+{% block script %}
+
+var booktitle = {{book.title}};
+var bookprice = {{book.price}};
+var bookdescription  = {{book.description}};
+
+document.getElementById("title").value = booktitle;
+document.getElementById("price").value = bookprice;
+document.getElementById("description").value = bookdescription;
+
+{% endblock script %}
+{% block body %}
+
+<div class="container col-8 mt-2">
+    <form id="newPost" method="POST">
+        {% comment %} {% csrf_token %} {% endcomment %}
+        <div class="form-group">
+            <label for="price">Book Title</label>
+            <input type="text" class="form-control" id="title" name="name" value=" " placeholder="Enter the Name">
+        </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" id="price" name="price" value=" " placeholder="Enter the Price">
+        </div>
+                <div class="form-group">
+                    <label for="descrition">Description: </label>
+                    <textarea class="form-control" id="description" name="description" value=" " rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="form-control btn btn-primary" value="Update Record">
+        </div>
+                    <button type="clear" class="btn btn-primary">clear</button>
+    </form>
+                <div>
+                    <a class="btn btn-primary mt-2" role="button" href="/all_books/">All Record</a>
+                </div>
+            </div>
+
+            {% endblock body %}
