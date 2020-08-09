@@ -3,20 +3,42 @@
 {% block homeactive %} active {% endblock homeactive %}
 {% block script %}
 
-var booktitle = {{book.title}};
+var booktitle = '{{book.title}}';
 var bookprice = {{book.price}};
-var bookdescription  = {{book.description}};
+var bookdescription  = '{{book.description}}';
 
 document.getElementById("title").value = booktitle;
 document.getElementById("price").value = bookprice;
 document.getElementById("description").value = bookdescription;
+
+var form = document.getElementById('newPost')
+
+form.addEventListener('submit', function (e) {
+
+    e.preventDefault()
+
+    var title1 = document.getElementById('title').value
+    var price1 = document.getElementById('price').value
+    var description1 = document.getElementById('description').value
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("PUT", "http://127.0.0.1:8000/api/booksbooks/{{bookid}}/", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    data = JSON.stringify({
+        title: title1,
+        price: price1,
+        description: description1
+    })
+    xhttp.send(data);
+    alert("Record Updated Successfuly")
+    location.replace("/all_books/")
+})
 
 {% endblock script %}
 {% block body %}
 
 <div class="container col-8 mt-2">
     <form id="newPost" method="POST">
-        {% comment %} {% csrf_token %} {% endcomment %}
         <div class="form-group">
             <label for="price">Book Title</label>
             <input type="text" class="form-control" id="title" name="name" value=" " placeholder="Enter the Name">

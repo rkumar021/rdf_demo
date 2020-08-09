@@ -18,8 +18,9 @@ def Home(request):
     return render(request,'Home.html',contaxt)
 
 def UpdateBook(request,bookid):
+    bookid = bookid
     book = Book.objects.filter(id=bookid)
-    return render(request, 'updatebook.html', {'book':book[0]})
+    return render(request, 'updatebook.html', {'book':book[0],'bookid':bookid})
 
 def ShowAllRecord(request):
     return render(request, 'allrecord.html')
