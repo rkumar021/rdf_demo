@@ -30,5 +30,7 @@ urlpatterns = [
    #url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
    path('api/books',include(router.urls)),
    path('',views.Home,name='home'),
+   path('home/<int:bookid>',views.UpdateBook,name='home'),
+   path('all_books/',views.ShowAllRecord,name='handleLogout'),
     
 ]

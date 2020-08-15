@@ -1,0 +1,65 @@
+<!doctype html>
+
+<head>
+    <title>demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container col-9">
+        <h1 class="text-center">Book Table</h1>
+        <div class="form-group">
+            <a class="form-control btn btn-primary" href="/">Add new Record</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="table">
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $.getJSON('http://127.0.0.1:8000/api/booksbooks/', function (data) {
+                var bookdata = "";
+                $.each(data, function (index) {
+                    console.log(index)
+                    var bookid = data[index].id
+                    bookdata += '<tr>'
+                    bookdata += '<td scope="row">' + data[index].id + '</td>'
+                    bookdata += '<td>' + data[index].created + '</td>'
+                    bookdata += '<td>' + data[index].title + '</td>'
+                    bookdata += '<td>' + data[index].description + '</td>'
+                    bookdata += '<td>' + data[index].price + '</td>'
+                    bookdata += '<td><a class="btn btn-primary" role="button" href="/home/'+bookid+'">Update</a></td>'
+                    bookdata += '<td><a class="btn btn-danger" role="button" onclick="deletebook('+bookid+')">Delete</a></td>'
+                    bookdata += '</tr>'
+                });
+                $('#table').append(bookdata);
+            });
+        });
+
+        function deletebook(bookid){
+            var choice = confirm("Are You Sure You Want To Delete this Record ?");
+            if (choice == true) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("DELETE", "http://127.0.0.1:8000/api/booksbooks/"+bookid, true);
+                xhttp.send();
+                location.reload()
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'rest_framework.authtoken',
     'rest_auth',
+    'oauth2_provider',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -118,7 +119,10 @@ REST_FRAMEWORK = {
 #     'PAGE_SIZE': 10
         'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
-        #'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
     ]
  }
 
@@ -146,6 +150,6 @@ STATIC_URL = '/static/'
 #for whitelisting webservers
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:8001",
+    "http://127.0.0.1:8000",
     "http://127.0.0.1:5500",
-
 ]
