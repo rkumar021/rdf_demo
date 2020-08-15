@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework_swagger',
     'rest_framework.authtoken',
-    'rest_auth',
     'oauth2_provider',
 
     'django.contrib.admin',

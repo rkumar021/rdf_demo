@@ -14,6 +14,11 @@ form.addEventListener('submit', function (e) {
     var description1 = document.getElementById('description').value
 
     var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() { 
+        if (xhttp.readyState == 4 && xhttp.status == 201){
+            alert("Record added Successfuly")
+            location.replace("all_books/")
+        }}
     xhttp.open("POST", "http://127.0.0.1:8000/api/booksbooks/", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     data = JSON.stringify({
@@ -22,8 +27,6 @@ form.addEventListener('submit', function (e) {
         description: description1
     })
     xhttp.send(data);
-    alert("Record added Successfuly")
-    location.replace("all_books/")
 })
 {% endblock script %}
 {% block body %}
