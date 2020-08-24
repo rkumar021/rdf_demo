@@ -32,5 +32,9 @@ urlpatterns = [
    path('',views.Home,name='home'),
    path('home/<int:bookid>',views.UpdateBook,name='home'),
    path('all_books/',views.ShowAllRecord,name='handleLogout'),
+   path('register/', views.register),
+   path('token/', views.token),
+   path('token/refresh/', views.refresh_token),
+   path('token/revoke/', views.revoke_token),
     
 ]
