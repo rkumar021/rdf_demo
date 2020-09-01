@@ -16,7 +16,7 @@ from .serializers import CreateUserSerializer
 CLIENT_ID = 'xj5wy7roTCYh4MSuyNSCuJJRboHw77yLeMzWtCSi'
 CLIENT_SECRET = '9lN1HoruklWYrl8DPKZ4QlLV150UqtKViys1aHbZNyMSVdEiGJwt8pyWxFjco8oWS5ekUBq6RoVuJSwIjio4KWf99CTqVzwRmLQH4eyWw0g2TLUH3qeDzWIIItWhUYmp'
 
-from core.models import Book, Signup
+from core.models import Book
 from core.serializers import BookSerializer
 # Create your views here.
 
