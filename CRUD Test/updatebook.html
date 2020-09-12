@@ -50,7 +50,7 @@
                         alert('Something went wrong...');
                     }
                 }
-                xhttp.open("GET", "http://127.0.0.1:8000/api/booksbooks/" + bookid1, true);
+                xhttp.open("GET", "http://127.0.0.1:8000/api/booksbooks/" + bookid1 + "/", true);
                 xhttp.setRequestHeader("authorization", "Bearer " + localStorage.getItem("access_token"));
                 xhttp.send();
             });

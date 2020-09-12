@@ -105,7 +105,7 @@
             var choice = confirm("Are You Sure You Want To Delete this Record ?");
             if (choice == true) {
                 var xhttp = new XMLHttpRequest();
-                xhttp.open("DELETE", "http://127.0.0.1:8000/api/booksbooks/" + bookid, true);
+                xhttp.open("DELETE", "http://127.0.0.1:8000/api/booksbooks/" + bookid + "/", true);
                 xhttp.setRequestHeader("authorization", "Bearer " + localStorage.getItem("access_token"));
                 xhttp.send();
                 location.reload()
