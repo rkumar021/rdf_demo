@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %} Home{% endblock title %}
+{% block homeactive %} active {% endblock homeactive %}
+{% block script %}
+
+var form = document.getElementById('newPost')
+
+form.addEventListener('submit', function (e) {
+
+    e.preventDefault()
+
+    var title1 = document.getElementById('title').value
+    var price1 = document.getElementById('price').value
+    var description1 = document.getElementById('description').value
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() { 
+        if (xhttp.readyState == 4 && xhttp.status == 201){
+            alert("Record added Successfuly")
+            location.replace("all_books/")
+        }}
+    xhttp.open("POST", "http://127.0.0.1:8000/api/booksbooks/", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    data = JSON.stringify({
+        title: title1,
+        price: price1,
+        description: description1
+    })
+    xhttp.send(data);
+})
+{% endblock script %}
+{% block body %}
+
+<div class="container col-8 mt-2">
+    <form id="newPost" method="POST">
+        <div class="form-group">
+            <label for="price">Book Title</label>
+            <input type="text" class="form-control" id="title" name="name" placeholder="Enter the Name">
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" class="form-control" id="price" name="price" placeholder="Enter the Price">
+        </div>
+        <div class="form-group">
+            <label for="descrition">Description: </label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="form-control btn btn-primary" value="Add Record">
+        </div>
+        <button type="clear" class="btn btn-primary">clear</button>
+    </form>
+    <div>
+        <a class="btn btn-primary mt-2" role="button" href="/all_books/">All Record</a>
+    </div>
+</div>
+{% endblock body %}
